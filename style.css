@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body {
+    margin: 0;
+}
+:root {
+    font-size: 20px;
+    font-family: "Montserrat", "sans-serif";
+    box-sizing: border-box;
+}
+.gridContainer {
+    display: grid;
+    grid-template-rows: 20% 80%;
+    min-height: 100vh;
+}
+.header {
+    display: grid;
+    grid-area: 1 / 1 / 2 / -1 ;
+    align-content: center;
+    justify-content: center;
+
+    background-color: #CCC5B9;
+    box-shadow: 2px 3px 13px grey;
+    z-index: 1;
+
+}
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 15px;
+}
+h1 + p {
+    font-size: 1.5rem;
+    text-align: center;
+}
+.cardContainer {
+    grid-area: 2 / 1 / -1 / -1;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    
+
+    background-color: #FFFCF2;
+}
+.card {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    justify-self: center;
+    
+    width: 80vw;
+    height: 50%;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+    box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.466);
+
+    background-color: #CCC5B9;
+}
+.title {
+    height: 30%;
+    font-size: 1.5em;
+}
+.moreInfo {
+    display: grid;
+}
