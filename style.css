@@ -62,3 +62,136 @@ h1 + p {
 .moreInfo {
     display: grid;
 }
+
+.addNewButton {
+    font-size: 2.5em;
+    font-family: inherit;
+    font-weight: bold;
+    margin: 50px 10px;
+    cursor: pointer;
+    border: none;
+    width: 80%;
+    height: 8rem;
+    justify-self: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(128,128,128,0.466);
+}
+
+.overlay-form {
+    position:absolute;
+    top:50vh;
+    left:0px;
+    width:100vw;
+    height:0vh;
+    background:rgba(0,0,0,0.8);
+    z-index: -1;
+    opacity: 0;
+    padding: 80px 100px;
+    overflow:scroll;
+    box-sizing: border-box;
+    transition: top 500ms ease-in-out,
+                opacity 500ms ease-in-out,
+                height 0ms ease-in-out 500ms;
+}
+
+.overlay-form .close-btn {
+    position:absolute;
+    top: 20px;
+    right: 40px;
+    color: #fff;
+    font-size: 5rem;
+    font-weight: 600;
+    cursor:pointer;
+}
+.overlay-form h1 {
+    font-size: 3rem;
+    color: #fff;
+
+}
+
+.overlay-form p {
+    font-size: 2em;
+    color: #fff; 
+}
+
+.overlay-form .form-element {
+    margin: 20px 0px;
+}
+
+.overlay-form label {
+    display: block;
+    font-size: 2em;
+    color: #eb5e28;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.overlay-form input {
+    width: 100%;
+    padding: 17px;
+    font-size: 25px;
+    border: 4px solid #fff;
+    background: transparent;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    color: #fff;
+    font-weight: 500;
+}
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    font:inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 4px solid #fff;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    cursor: pointer;
+
+    display: grid;
+    place-content: center;
+}
+input[type="checkbox"]::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #eb5e28;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+input[type="checkbox"]:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+}
+.overlay-form button {
+    margin-top: 30px;
+    width: 50%;
+    height: 75px;
+    font-size: 2em;
+    background-color: #eb5e28;
+    color: #fff;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+body.activeForm .overlay-form{
+    z-index: 2;
+    opacity: 1;
+    top: 0px;
+    height: 100vh;
+    transition: top 500ms ease-in-out,
+                opacity 500ms ease-in-out,
+                height 0ms ease-in-out 0ms;
+}

@@ -1,4 +1,16 @@
+// controls for pulling up the input form
+function toggleForm (){
+    document.body.classList.toggle("activeForm")
+}
+
 let myLibrary = [];
+
+const cardContainer = document.querySelector(".cardContainer")
+
+let submit = document.querySelector("#submit");
+submit.addEventListener("click",(addBookToLibrary))
+
+
 
 function Book(title, author, pages, read) {
     this.title = title
@@ -8,8 +20,15 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary (title, author, pages, read){
+    title = document.querySelector("#bookTitle").value;
+    author = document.querySelector("#bookAuthor").value;
+    pages = document.querySelector("#bookPages").value;
+    read = document.querySelector("#bookRead").value;
     let newBook = new Book(title, author, pages, read);
-    myLibrary.push(newBook); 
+    myLibrary.push(newBook);
+    console.log(title,author,pages,read,myLibrary)
+    displayLibrary(); 
+    // console.log(title,author,pages,read)
 }
 
 function displayLibrary() {
@@ -30,11 +49,11 @@ function displayLibrary() {
 
         const cardAuthor = document.createElement("div");
         moreInfo.appendChild(cardAuthor);
-        cardAuthor.textContent = element.author;
+        cardAuthor.textContent = "by " + element.author;
 
         const cardPages = document.createElement("div");
         moreInfo.appendChild(cardPages);
-        cardPages.textContent = element.pages;
+        cardPages.textContent = element.pages + " Pages";
 
         const cardRead = document.createElement("div");
         moreInfo.appendChild(cardRead);
@@ -46,12 +65,8 @@ function displayLibrary() {
     };
 
 
-const cardContainer = document.querySelector(".cardContainer")
 
-addBookToLibrary ("The Hobbit", "Bloke", "1566", true);
-addBookToLibrary ("Mistborn", "Brandon Sanderson", "400", true);
-addBookToLibrary ("Pride and Prejudice", "Woman", "42069", false);
 
-console.log(myLibrary)
-displayLibrary();
+
+
 
