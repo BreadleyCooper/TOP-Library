@@ -2,14 +2,15 @@
 body {
     margin: 0;
 }
+
 :root {
-    font-size: 20px;
+    font-size: 12px;
     font-family: "Montserrat", "sans-serif";
     box-sizing: border-box;
 }
 .gridContainer {
     display: grid;
-    grid-template-rows: 40% 80%;
+    grid-template-rows: 450px 1fr;
     min-height: 100vh;
 }
 .header {
@@ -21,6 +22,7 @@ body {
     background-color: #CCC5B9;
     box-shadow: 2px 3px 13px grey;
     z-index: 1;
+    max-height: 450px;
 
 }
 h1 {
@@ -44,16 +46,18 @@ h1 + p {
 .card {
     display: grid;
     grid-template-rows: 1fr 2fr;
+    grid-template-columns: 4fr 1fr;
     justify-self: center;
     
     width: 80vw;
-    height: 50%;
+    height: 300px;
     padding: 1em;
     margin: 1em;
     border-radius: 1em;
     box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.466);
 
     background-color: #CCC5B9;
+    border-left: #eb5e28 6px solid;
 }
 .title {
     height: 30%;
@@ -61,10 +65,38 @@ h1 + p {
 }
 .moreInfo {
     display: grid;
+    grid-row-start: 2;
 }
 .buttonContainer {
     display: grid;
     
+}
+.deleteCardContainer {
+    display: grid;
+    grid-column-start: 2;
+    z-index: 1;
+}
+.deleteCardBtn {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    justify-self: center;
+    align-self: center;
+    font-size: inherit;
+    height: 20px;
+    width: 20px;
+    background: none;
+    z-index: 1;
+    font-size: 3em;
+    color: #eb5e28;
+}
+.checkWhenRead {
+    font-size: 1.5em;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    color: #eb5e28;
 }
 
 .addNewButton {
@@ -74,7 +106,7 @@ h1 + p {
     margin: 50px 10px;
     cursor: pointer;
     border: none;
-    width: 80%;
+    width: 100%;
     height: 8rem;
     justify-self: center;
     border-radius: 10px;
@@ -177,7 +209,7 @@ input[type="checkbox"]:focus {
 }
 .overlay-form button {
     margin-top: 30px;
-    width: 50%;
+    width: 100%;
     height: 75px;
     font-size: 2em;
     background-color: #eb5e28;
@@ -198,4 +230,10 @@ body.activeForm .overlay-form{
     transition: top 500ms ease-in-out,
                 opacity 500ms ease-in-out,
                 height 0ms ease-in-out 0ms;
+}
+@media only screen and (min-width:1000px) {
+    :root {
+    font-size: 20px;
+    }
+
 }

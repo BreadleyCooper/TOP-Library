@@ -10,14 +10,15 @@ const cardContainer = document.querySelector(".cardContainer")
 let submit = document.querySelector("#submit");
 submit.addEventListener("click",(addBookToLibrary))
 
+
+
 function clearDisplay (){
-    let elementCheck = document.querySelectorAll("div.card")
-    if (elementCheck.length > 0) {
-        const card = document.querySelector(".card")
-        card.remove()
+        while(cardContainer.firstChild){;
+        cardContainer.removeChild(cardContainer.lastChild);
     }
-    
 }
+
+
 
 
 function Book(title, author, pages, read) {
@@ -31,7 +32,6 @@ function addBookToLibrary (title, author, pages, read){
     title = document.querySelector("#bookTitle").value;
     author = document.querySelector("#bookAuthor").value;
     pages = document.querySelector("#bookPages").value;
-    read = document.querySelector("#bookRead").value;
     let newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
     console.log(title,author,pages,read,myLibrary)
@@ -65,16 +65,52 @@ function displayLibrary() {
 
         const cardRead = document.createElement("div");
         moreInfo.appendChild(cardRead);
-        cardRead.textContent = element.read;
-        if (cardRead.textContent === "true"){
-                cardRead.textContent = "You have read this book";
-                } else cardRead.textContent = "You have not read this book";
+        
+        // create the delete button and container
+        const deleteCardContainer = document.createElement("div");
+        const deleteCardBtn = document.createElement("button");
+        deleteCardBtn.textContent = "🗑" 
+        // append them to the card div
+        newCard.appendChild(deleteCardContainer);
+        deleteCardContainer.appendChild(deleteCardBtn);
+        // add their css classes
+        deleteCardContainer.classList.add("deleteCardContainer");
+        deleteCardBtn.classList.add("deleteCardBtn");
+        deleteCardBtn.addEventListener("click", () => {
+            removeBook();
+            function removeBook(){
+            cardContainer.removeChild(newCard);    
+            for (let i=0; i < myLibrary.length; i++) {
+                if (cardTitle.textContent == myLibrary[i].title)
+                myLibrary.splice(i,1)
+            }}
+        })
+
+        // create the check when read icon
+        const checkWhenRead = document.createElement("div")
+        newCard.appendChild(checkWhenRead);
+        checkWhenRead.classList.add("checkWhenRead");
+        checkWhenRead.textContent = "Change to read ✔";
+        checkWhenRead.addEventListener("click", () =>{
+            checkWhenRead.textContent = "Change to unread ✗"
+            if (cardRead.textContent == "You have read this book") {
+                cardRead.textContent = "Not read yet";
+                checkWhenRead.textContent = "Change to read ✔"
+                element.read = false
+            }
+            else { element.read = true;
+            checkIfRead()};
+            function checkIfRead(){
+                for (let i=0; i < myLibrary.length; i++) {
+                    if (myLibrary[i].read == true){;
+                    cardRead.textContent = "You have read this book";
+                } else {
+                    cardRead.textContent = "Change to read ✔";
+                    myLibrary[i].read == false;
+                }
             };
-    };
+            };
+        });
 
 
-
-
-
-
-
+    }};
