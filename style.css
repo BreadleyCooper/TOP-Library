@@ -9,7 +9,7 @@ body {
 }
 .gridContainer {
     display: grid;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 40% 80%;
     min-height: 100vh;
 }
 .header {
@@ -26,7 +26,7 @@ body {
 h1 {
     font-size: 3rem;
     text-align: center;
-    margin: 15px;
+    margin: 50px 15px 15px;
 }
 h1 + p {
     font-size: 1.5rem;
@@ -61,6 +61,10 @@ h1 + p {
 }
 .moreInfo {
     display: grid;
+}
+.buttonContainer {
+    display: grid;
+    
 }
 
 .addNewButton {

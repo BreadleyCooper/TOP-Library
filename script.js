@@ -10,6 +10,14 @@ const cardContainer = document.querySelector(".cardContainer")
 let submit = document.querySelector("#submit");
 submit.addEventListener("click",(addBookToLibrary))
 
+function clearDisplay (){
+    let elementCheck = document.querySelectorAll("div.card")
+    if (elementCheck.length > 0) {
+        const card = document.querySelector(".card")
+        card.remove()
+    }
+    
+}
 
 
 function Book(title, author, pages, read) {
@@ -18,7 +26,7 @@ function Book(title, author, pages, read) {
     this.pages = pages
     this.read = read
 }
-
+;
 function addBookToLibrary (title, author, pages, read){
     title = document.querySelector("#bookTitle").value;
     author = document.querySelector("#bookAuthor").value;
@@ -27,8 +35,8 @@ function addBookToLibrary (title, author, pages, read){
     let newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
     console.log(title,author,pages,read,myLibrary)
+    clearDisplay();
     displayLibrary(); 
-    // console.log(title,author,pages,read)
 }
 
 function displayLibrary() {
