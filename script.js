@@ -10,7 +10,7 @@ function toggleForm (){
     document.body.classList.toggle("activeForm")
 }
 function storeLibrary (){
-    if (myLibrary.length > 0){
+    if (myLibrary !== null){
         libraryJSON = JSON.stringify(myLibrary);
         localStorage.setItem("JSONLibrary", libraryJSON)
     } 
@@ -18,8 +18,8 @@ function storeLibrary (){
 
 function retrieveLibrary() {
     libraryJSONText = localStorage.getItem("JSONLibrary")
-    myLibrary = JSON.parse(libraryJSONText)
-    if (myLibrary.length > 0) {
+    myLibraryToPush = JSON.parse(libraryJSONText);
+    if (myLibrary !== null) {
         displayLibrary()
     }
 }
