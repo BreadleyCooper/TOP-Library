@@ -18,7 +18,7 @@ function storeLibrary (){
 
 function retrieveLibrary() {
     libraryJSONText = localStorage.getItem("JSONLibrary")
-    myLibraryToPush = JSON.parse(libraryJSONText);
+    myLibrary = JSON.parse(libraryJSONText);
     if (myLibrary !== null) {
         displayLibrary()
     }
@@ -139,7 +139,7 @@ function displayLibrary() {
             };
             };
             storeLibrary()
-            console.log("stored");});
+            });
 
 
     }};
