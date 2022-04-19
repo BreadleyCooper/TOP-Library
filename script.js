@@ -1,8 +1,26 @@
 // controls for pulling up the input form
+let libraryJSONText
+
+retrieveLibrary()
+displayLibrary()
+
 function toggleForm (){
     document.body.classList.toggle("activeForm")
 }
+function storeLibrary (){
+    if (myLibrary.length > 0){
+        libraryJSON = JSON.stringify(myLibrary);
+        localStorage.setItem("JSONLibrary", libraryJSON)
+    } 
+}
 
+function retrieveLibrary() {
+    libraryJSONText = localStorage.getItem("JSONLibrary")
+    myLibrary = JSON.parse()
+    if (myLibrary.length > 0) {
+        displayLibrary()
+    }
+}
 let myLibrary = [];
 
 const cardContainer = document.querySelector(".cardContainer")
@@ -36,6 +54,7 @@ function addBookToLibrary (title, author, pages, read){
     myLibrary.push(newBook);
     console.log(title,author,pages,read,myLibrary)
     clearDisplay();
+    storeLibrary();
     displayLibrary(); 
 }
 
