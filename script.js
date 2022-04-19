@@ -1,8 +1,10 @@
 // controls for pulling up the input form
 let libraryJSONText
+let myLibrary = [];
+const cardContainer = document.querySelector(".cardContainer")
 
 retrieveLibrary()
-displayLibrary()
+// displayLibrary()
 
 function toggleForm (){
     document.body.classList.toggle("activeForm")
@@ -16,14 +18,14 @@ function storeLibrary (){
 
 function retrieveLibrary() {
     libraryJSONText = localStorage.getItem("JSONLibrary")
-    myLibrary = JSON.parse()
+    myLibrary = JSON.parse(libraryJSONText)
     if (myLibrary.length > 0) {
         displayLibrary()
     }
 }
-let myLibrary = [];
 
-const cardContainer = document.querySelector(".cardContainer")
+
+
 
 let submit = document.querySelector("#submit");
 submit.addEventListener("click",(addBookToLibrary))
@@ -52,7 +54,6 @@ function addBookToLibrary (title, author, pages, read){
     pages = document.querySelector("#bookPages").value;
     let newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
-    console.log(title,author,pages,read,myLibrary)
     clearDisplay();
     storeLibrary();
     displayLibrary(); 
@@ -84,6 +85,11 @@ function displayLibrary() {
 
         const cardRead = document.createElement("div");
         moreInfo.appendChild(cardRead);
+        if (element.read == true) {
+            cardRead.textContent = "You have read this book"
+        } else if(element.read == false) {
+            cardRead.textContent = "Not read yet"
+        }
         
         // create the delete button and container
         const deleteCardContainer = document.createElement("div");
@@ -103,13 +109,16 @@ function displayLibrary() {
                 if (cardTitle.textContent == myLibrary[i].title)
                 myLibrary.splice(i,1)
             }}
+            storeLibrary();
         })
 
         // create the check when read icon
         const checkWhenRead = document.createElement("div")
         newCard.appendChild(checkWhenRead);
         checkWhenRead.classList.add("checkWhenRead");
-        checkWhenRead.textContent = "Change to read ✔";
+        if (element.read == true) {
+            checkWhenRead.textContent = "Change to unread ✗"
+        } else checkWhenRead.textContent = "Change to read ✔";
         checkWhenRead.addEventListener("click", () =>{
             checkWhenRead.textContent = "Change to unread ✗"
             if (cardRead.textContent == "You have read this book") {
@@ -129,7 +138,8 @@ function displayLibrary() {
                 }
             };
             };
-        });
+            storeLibrary()
+            console.log("stored");});
 
 
     }};
