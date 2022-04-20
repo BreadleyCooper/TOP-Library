@@ -18,10 +18,11 @@ function storeLibrary (){
 
 function retrieveLibrary() {
     libraryJSONText = localStorage.getItem("JSONLibrary")
+    if (libraryJSONText !== null) {
     myLibrary = JSON.parse(libraryJSONText);
     if (myLibrary !== null) {
         displayLibrary()
-    }
+    }}
 }
 
 
